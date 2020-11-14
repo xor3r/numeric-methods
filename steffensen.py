@@ -9,9 +9,9 @@ def check(x):
     print(f(x))
 
 
-def compute_steffensen():
-    eps = 0.01
-    x = -2
+def compute_steffensen(interactive=False):
+    eps = float(input("Enter deviation: ")) if interactive else 0.01
+    x = float(input("Enter X: ")) if interactive else -2
     while True:
         x0 = x
         fx = f(x)
@@ -20,6 +20,7 @@ def compute_steffensen():
         x = x - (fx/(fz-fx))*fx
         if abs((x - x0) / x) < eps:
             break
+    print(x)
     check(x)
 
 
