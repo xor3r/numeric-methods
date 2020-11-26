@@ -2,19 +2,19 @@ import copy
 
 
 def gauss_eq(a, b):
-    inx = [1,2,3,4]
+    inx = [1, 2, 3, 4]
     v = copy.deepcopy(a)
     p = copy.deepcopy(b)
     y = copy.deepcopy(p)
     c = copy.deepcopy(a)
     n = len(a)
-    for i in range(1,n):
+    for i in range(1, n):
         inx[i] = i
-    for i in range(1,n):
+    for i in range(1, n):
         for j in range(1, n):
             v[i][j] = a[i][j]
             p[i] = b[i]
-    for k in range(1,n):
+    for k in range(1, n):
         max = abs(v[k][k])
         h = k
         w = k
@@ -44,9 +44,9 @@ def gauss_eq(a, b):
                     v[d][k] = v[d][w]
                     v[d][w] = value
         y[k] = p[k]/v[k][k]
-        for i in range(k+1,n):
+        for i in range(k+1, n):
             p[i] = p[i] - v[i][k]*y[k]
-            for j in range(k+1,n):
+            for j in range(k+1, n):
                 c[k][j] = v[k][j]/v[k][k]
                 v[i][j] = v[i][j] - v[i][k]*c[k][j]
     x = copy.deepcopy(y)
@@ -55,7 +55,7 @@ def gauss_eq(a, b):
         for j in range(i+1,n):
             s += c[i][j]*x[j]
         x[i] = y[i] - s
-    for i in range(1,n):
+    for i in range(1, n):
         if inx[i] != i:
             z = inx[i]
             value = x[i]
